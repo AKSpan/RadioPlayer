@@ -14,13 +14,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.initStyle(StageStyle.TRANSPARENT);
         Parent root = FXMLLoader.load(getClass().getResource("radio_station.fxml"));
-
-        Scene scene = new Scene(root, Color.TRANSPARENT);
-
+        Scene scene = new Scene(root);
         stage.setScene(scene);
-
         stage.show();
     }
 

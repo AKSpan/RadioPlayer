@@ -7,12 +7,13 @@ import java.net.URL;
  * Создал Alexey. Дата: 30.01.2016 17:48.
  */
 public class RadioStation {
+    private static int idCouter ;
     private int id;
     private String name;
     private URL url;
 
-    public RadioStation(int id, String name, String url) {
-        this.id = id;
+    public RadioStation(String name, String url) {
+        this.id = ++idCouter;
         this.name = name;
         try {
             this.url = new URL(url);
@@ -25,9 +26,6 @@ public class RadioStation {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

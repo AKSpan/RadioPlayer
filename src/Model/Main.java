@@ -10,13 +10,10 @@ import java.net.URISyntaxException;
  */
 public class Main {
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException, URISyntaxException {
-        RadioStationList rslist = new RadioStationList()
-                .addRadioStation(new RadioStation(1, "Radio1", "http://54.155.51.103/live_6886540"))
-                .addRadioStation(new RadioStation(2, "Radio2", "http://54.155.51.103/live_6886540"))
-                .addRadioStation(new RadioStation(3, "Radio3", "http://54.155.51.103/live_6886540"));
 
-        Application app = new Application(new Player(rslist));
+        Application app =  new Application();
         System.out.println(app);
+
 
 
     }

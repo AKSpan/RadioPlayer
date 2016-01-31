@@ -43,11 +43,11 @@ public class MainFormController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         rslist = new RadioStationList()
-                .addRadioStation(new RadioStation(1, "Radio1", "http://54.155.51.103/live_6886540"))
-                .addRadioStation(new RadioStation(2, "Radio2", "http://54.155.51.103/live_6886540"))
-                .addRadioStation(new RadioStation(3, "Radio3", "http://54.155.51.103/live_6886540"));
+                .addRadioStation(new RadioStation("Radio1", "http://54.155.51.103/live_6886540"))
+                .addRadioStation(new RadioStation( "Radio2", "http://54.155.51.103/live_6886540"))
+                .addRadioStation(new RadioStation( "Radio3", "http://54.155.51.103/live_6886540"));
 
-        app = new Application(new Player(rslist));
+       // app = new Application(new Player(rslist));
         final ObservableList stations =
                 FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7");
         stationsList.setItems(stations);
@@ -84,4 +84,21 @@ public class MainFormController implements Initializable {
     }
 
 
+    public void addMenu(ActionEvent actionEvent) {
+        System.out.println("addmenu");
+    }
+
+    public void deleteMenu(ActionEvent actionEvent) {
+        System.out.println("deletemenu");
+    }
+
+    public void aboutMenu(ActionEvent actionEvent) {
+        System.out.println("aboutmenu");
+
+    }
+
+    public void closeMenu(ActionEvent actionEvent) {
+        System.out.println("closeMenu");
+
+    }
 }

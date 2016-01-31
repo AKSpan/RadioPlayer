@@ -79,4 +79,13 @@ public class RadioStationList {
                 "radioStationList=" + radioStationList +
                 ']';
     }
+
+    public RadioStation[] toArray() {
+        RadioStation[] rsArray = new RadioStation[this.radioStationList.size()];
+        int i = 0;
+        for (Map.Entry<Integer, RadioStation> rs : this.radioStationList.entrySet())
+            rsArray[i++] = rs.getValue();
+
+        return rsArray;
+    }
 }
