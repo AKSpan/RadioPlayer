@@ -1,11 +1,6 @@
 package Controller;
 
 import Model.Application;
-import Model.Player;
-import Model.RadioStation;
-import Model.RadioStationList;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,17 +17,7 @@ import java.util.ResourceBundle;
  */
 public class MainFormController implements Initializable {
 
-    private RadioStationList rslist;
-    private Application app;
-
-    public String getCurrentStation() {
-        return currentStation;
-    }
-
-    public void setCurrentStation(String currentStation) {
-        this.currentStation = currentStation;
-    }
-
+    private static Application app;
     private String currentStation;
 
     @FXML
@@ -42,23 +27,21 @@ public class MainFormController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        rslist = new RadioStationList()
-                .addRadioStation(new RadioStation("Radio1", "http://54.155.51.103/live_6886540"))
-                .addRadioStation(new RadioStation( "Radio2", "http://54.155.51.103/live_6886540"))
-                .addRadioStation(new RadioStation( "Radio3", "http://54.155.51.103/live_6886540"));
-
-       // app = new Application(new Player(rslist));
-        final ObservableList stations =
-                FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7");
+        app = new Application();
+        final ObservableList<String> stations = FXCollections.observableArrayList(app.getRadioStationsName());
         stationsList.setItems(stations);
 
-        stationsList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                // Your action here
-                setCurrentStation(newValue);
-            }
+        stationsList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            setCurrentStation(newValue);
         });
+    }
+
+    public String getCurrentStation() {
+        return currentStation;
+    }
+
+    public void setCurrentStation(String currentStation) {
+        this.currentStation = currentStation;
     }
 
     @FXML

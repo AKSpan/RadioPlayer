@@ -8,6 +8,11 @@ import java.net.URL;
 public class Player {
     private RadioStationList radioStationList;
 
+    public RadioStationList getRadioStationList() {
+        return radioStationList;
+    }
+
+
     public Player(RadioStationList radioStationList) {
         this.radioStationList = radioStationList;
     }

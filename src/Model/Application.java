@@ -1,9 +1,9 @@
 package Model;
 
-import javax.sound.sampled.*;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -48,9 +48,29 @@ public class Application {
             rslist.addRadioStation(new RadioStation(name, url));
         }
         //endregion
-        Player player = new Player(rslist);
-        this.player = player;
+        this.player = new Player(rslist);
     }
+
+    private Player getPlayer() {
+        return this.player;
+    }
+
+    private RadioStationList getRadioStationList() {
+        return this.player.getRadioStationList();
+    }
+
+    private RadioStation[] getRadioStations() {
+        return this.getRadioStationList().toArray();
+    }
+
+    public String[] getRadioStationsName() {
+        String[] names = new String[getRadioStations().length];
+        int i = 0;
+        for (RadioStation rs : getRadioStations())
+            names[i++] = rs.getName();
+        return names;
+    }
+
 
     //region Methods
 
