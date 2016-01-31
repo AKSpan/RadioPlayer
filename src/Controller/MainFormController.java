@@ -84,4 +84,14 @@ public class MainFormController implements Initializable {
         System.out.println("closeMenu");
 
     }
+
+    public void loadPlaylistMenu(ActionEvent actionEvent) {
+        System.out.println("loadPlaylistMenu");
+    }
+
+    public void savePlaylistMenu(ActionEvent actionEvent) {
+
+        System.out.println("savePlaylistMenu");
+
+    }
 }
