@@ -15,6 +15,7 @@
                   <items>
                     <MenuItem fx:id="loadPlaylistMenu" mnemonicParsing="false" onAction="#loadPlaylistMenu" text="Load playlist" />
                         <MenuItem fx:id="savePlaylistMenu" mnemonicParsing="false" onAction="#savePlaylistMenu" text="Save playlist" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem fx:id="closeMenu11" mnemonicParsing="false" onAction="#closeMenu" text="Close" />
                   </items>
                 </Menu>

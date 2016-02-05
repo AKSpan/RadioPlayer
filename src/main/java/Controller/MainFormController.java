@@ -1,15 +1,21 @@
 package Controller;
 
 import Model.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -19,6 +25,7 @@ public class MainFormController implements Initializable {
 
     private static Application app;
     private String currentStation;
+    private File playlistFile;
 
     @FXML
     private Label label1;
@@ -81,12 +88,26 @@ public class MainFormController implements Initializable {
     }
 
     public void closeMenu(ActionEvent actionEvent) {
-        System.out.println("closeMenu");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Close application");
+        alert.setContentText("Do you want to close the application?");
 
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Platform.exit();
+            System.exit(0);
+        }
     }
 
     public void loadPlaylistMenu(ActionEvent actionEvent) {
         System.out.println("loadPlaylistMenu");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open playlist...");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("RSL Files", "*.rsl"));
+        playlistFile = fileChooser.showOpenDialog(null);
+        System.out.println(playlistFile.getAbsolutePath());
+
+
     }
 
     public void savePlaylistMenu(ActionEvent actionEvent) {
